@@ -4,7 +4,6 @@ using namespace std;
 
 class Riddle {
 
-
 private:
     string question;
     string answer;
@@ -13,8 +12,13 @@ private:
 public:
     Riddle(string q, string a);
 
-    bool checkAnswer(string userAnswer) const;
+    virtual bool checkAnswer(string userAnswer) const; 
+
     string getQuestion() const;
+    string getAnswer() const; 
     int getAttempts() const;
+
     void reduceAttempts();
+
+    virtual ~Riddle() {}
 };
