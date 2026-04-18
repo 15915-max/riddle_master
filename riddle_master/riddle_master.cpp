@@ -2,6 +2,7 @@
 #include <string>
 #include <limits>
 #include "riddle_master.h"
+#include "text_riddle.h"
 
 using namespace std;
 
@@ -104,26 +105,23 @@ void RiddleMaster::showInstructions() {
         cout << "\nInvalid choice!\n";
     }
 }
-
 void RiddleMaster::playGame() {
-
     string answer;
-    string correct;
     bool solved;
 
+    // 1st riddle with inheritance
+    TextRiddle r1("What gets smaller every time it takes a bath?", "Soap");
 
-    // 1st riddle
-    correct = "Soap";
     solved = false;
 
     cout << "\n\n=================================== 1st Riddle ===================================\n\n";
-    cout << "What gets smaller every time it takes a bath?\n";
+    cout << r1.getQuestion() << "\n";
 
     for (int i = 0; i < 3; i++) {
         cout << "Answer " << i + 1 << " is: ";
         getline(cin, answer);
 
-        if (answer == correct) {
+        if (r1.checkAnswer(answer)) {
             cout << "Yay! Correct answer!\n";
             score += 20;
             solved = true;
@@ -136,24 +134,22 @@ void RiddleMaster::playGame() {
     }
 
     if (!solved) {
-        cout << "The correct answer was: " << correct << "\n";
+        cout << "The correct answer was: " << r1.getAnswer() << "\n";
     }
 
+    // 2nd riddle with inheritance
+    TextRiddle r2("What word contains 26 letters but only has three syllables?", "Alphabet");
 
-
-
-    //2nd riddle
-    correct = "Alphabet";
     solved = false;
 
     cout << "\n\n=================================== 2nd Riddle ===================================\n\n";
-    cout << "What word contains 26 letters but only has three syllables?\n";
+    cout << r2.getQuestion() << "\n";
 
     for (int i = 0; i < 3; i++) {
         cout << "Answer " << i + 1 << " is: ";
         getline(cin, answer);
 
-        if (answer == correct) {
+        if (r2.checkAnswer(answer)) {
             cout << "Yay! Correct answer!\n";
             score += 20;
             solved = true;
@@ -166,24 +162,22 @@ void RiddleMaster::playGame() {
     }
 
     if (!solved) {
-        cout << "The correct answer was: " << correct << "\n";
+        cout << "The correct answer was: " << r2.getAnswer() << "\n";
     }
 
+    // 3rd riddle with inheritance
+    TextRiddle r3("What is always in front of you, but can't be seen?", "Future");
 
-
-
-    //3rd riddle
-    correct = "Future";
     solved = false;
 
     cout << "\n\n=================================== 3rd Riddle ===================================\n\n";
-    cout << "What is always in front of you, but can't be seen?\n";
+    cout << r3.getQuestion() << "\n";
 
     for (int i = 0; i < 3; i++) {
         cout << "Answer " << i + 1 << " is: ";
         getline(cin, answer);
 
-        if (answer == correct) {
+        if (r3.checkAnswer(answer)) {
             cout << "Yay! Correct answer!\n";
             score += 20;
             solved = true;
@@ -196,12 +190,13 @@ void RiddleMaster::playGame() {
     }
 
     if (!solved) {
-        cout << "The correct answer was: " << correct << "\n";
+        cout << "The correct answer was: " << r3.getAnswer() << "\n";
     }
 
     cout << "\nYou finished all the riddles!\nNow showing result...\n";
     showResult();
 }
+
     
 
 
